@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_000009) do
+ActiveRecord::Schema.define(version: 2020_12_25_000010) do
 
   create_table "attachments", force: :cascade do |t|
     t.string "attachable_type"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2020_12_25_000009) do
   create_table "keywords", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "locales", force: :cascade do |t|
+    t.string "value", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["value"], name: "index_locales_on_value", unique: true
   end
 
   create_table "names", force: :cascade do |t|

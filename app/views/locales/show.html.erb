@@ -1,0 +1,26 @@
+<% if notice.present? %>
+  <div class="alert alert-info" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to 'Locales', locales_path %>
+    </li>
+    <li class="breadcrumb-item active">
+      <%= @locale.value %>
+    </li>
+  </ol>
+</nav>
+<div class="mb-3">
+  <%= link_to 'Edit', edit_locale_path(@locale), class: %w[btn btn-primary] %>
+</div>
+<div class="mb-3 row">
+  <label class="col-sm-2 col-form-label">Value</label>
+  <div class="col-sm-10">
+    <span class="form-control-plaintext">
+      <%= @locale.value %>
+    </span>
+  </div>
+</div>

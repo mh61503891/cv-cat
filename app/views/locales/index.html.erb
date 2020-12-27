@@ -1,0 +1,38 @@
+<% if notice.present? %>
+  <div class="alert alert-info" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">Locales</li>
+  </ol>
+</nav>
+<%= link_to 'New Locale', new_locale_path, class: %w[btn btn-primary] %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @locales.each do |locale| %>
+      <tr>
+        <td><%= locale.value %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to 'Show', locale, class: %w[btn btn-sm btn-light] %>
+            <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Edit', edit_locale_path(locale), class: %w[dropdown-item] %></li>
+              <li><%= link_to 'Destroy', locale, method: :delete, class: %w[dropdown-item], data: { confirm: 'Are you sure?' } %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
