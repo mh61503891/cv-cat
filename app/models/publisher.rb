@@ -26,12 +26,7 @@ class Publisher < ApplicationRecord
 
   validates :names,
     length: {
-      minimum: 1,
-      maximum: Locale.count
-    }
-  validates :abbreviations,
-    length: {
-      maximum: Locale.count
+      minimum: 1
     }
   validates :url,
     url: { allow_nil: true }
