@@ -1,0 +1,35 @@
+<% if notice.present? %>
+  <div class="alert alert-info" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">Publishers</li>
+  </ol>
+</nav>
+<div class="btn-toolbar mb-3" role="toolbar">
+  <div class="btn-group ms-auto" role="group">
+    <%= link_to "New Publisher", new_publisher_path, class: %w[btn btn-primary] %>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Abbreviation</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @publishers.each do |publisher| %>
+        <tr>
+          <td><%= link_to publisher.names_tag, publisher %></td>
+          <td><%= publisher.abbreviations_tag %></td>
+          <td><%= publisher.link_to_url_tag %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,57 @@
+<%= form_with(model: publisher) do |form| %>
+  <% if publisher.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <p><%= pluralize(publisher.errors.count, "error") %> prohibited this publisher from being saved:</p>
+      <ul>
+        <% publisher.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="btn-toolbar mb-3" role="toolbar">
+    <div class="btn-group me-auto" role="group">
+      <%= link_to publisher, class: %w[btn btn-light] do %>
+        <i class="bi bi-arrow-left-short"></i>
+        <span>Back</span>
+      <% end %>
+    </div>
+    <div class="btn-group ms-auto" role="group">
+      <%= form.submit class: %w[btn btn-primary] %>
+    </div>
+  </div>
+  <%= form.fields_for :names do |names| %>
+    <div class="mb-3 row">
+      <div class="col-sm-2 col-form-label">
+        <%= names.label :value do %>
+          <%= tag.span(I18n.t(:name, locale_key: names.object.locale,
+            scope: [:activerecord, :attributes, :publisher])) %>
+        <% end %>
+      </div>
+      <div class="col-sm-10">
+        <%= names.hidden_field :locale %>
+        <%= names.text_field :value, class: %w[form-control] %>
+      </div>
+    </div>
+  <% end %>
+  <%= form.fields_for :abbreviations do |abbreviations| %>
+    <div class="mb-3 row">
+      <div class="col-sm-2 col-form-label">
+        <%= abbreviations.label :value do %>
+          <%= tag.span(I18n.t(:abbreviation, locale_key: abbreviations.object.locale,
+            scope: [:activerecord, :attributes, :publisher])) %>
+        <% end %>
+      </div>
+      <div class="col-sm-10">
+        <%= abbreviations.hidden_field :locale %>
+        <%= abbreviations.text_field :value, class: %w[form-control] %>
+      </div>
+    </div>
+  <% end %>
+  <div class="mb-3 row">
+    <%= form.label :url, class: %w[col-sm-2 col-form-label] %>
+    <div class="col-sm-10">
+      <%= form.text_field :url, class: %w[form-control] %>
+    </div>
+  </div>
+<% end %>

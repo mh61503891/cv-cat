@@ -1,0 +1,14 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to "Publishers", publishers_path %>
+    </li>
+    <li class="breadcrumb-item">
+      <%= link_to @publisher.id, @publisher %>
+    </li>
+    <li class="breadcrumb-item active">
+      <span>Editing</span>
+    </li>
+  </ol>
+</nav>
+<%= render "form", publisher: @publisher %>
