@@ -22,8 +22,8 @@
   </div>
   <%= form.fields_for :names do |names| %>
     <div class="mb-3 row">
-      <div class="col-sm-2 col-form-label">
-        <%= names.label :value do %>
+      <div class="col-sm-2">
+        <%= names.label :value, class: %w[col-form-label] do %>
           <%= tag.span(I18n.t(:name, locale_key: names.object.locale,
             scope: [:activerecord, :attributes, :publisher])) %>
         <% end %>
@@ -36,8 +36,8 @@
   <% end %>
   <%= form.fields_for :abbreviations do |abbreviations| %>
     <div class="mb-3 row">
-      <div class="col-sm-2 col-form-label">
-        <%= abbreviations.label :value do %>
+      <div class="col-sm-2">
+        <%= abbreviations.label :value, class: %w[col-form-label] do %>
           <%= tag.span(I18n.t(:abbreviation, locale_key: abbreviations.object.locale,
             scope: [:activerecord, :attributes, :publisher])) %>
         <% end %>
@@ -49,7 +49,9 @@
     </div>
   <% end %>
   <div class="mb-3 row">
-    <%= form.label :url, class: %w[col-sm-2 col-form-label] %>
+    <div class="col-sm-2">
+      <%= form.label :url, class: %w[col-form-label] %>
+    </div>
     <div class="col-sm-10">
       <%= form.text_field :url, class: %w[form-control] %>
     </div>
