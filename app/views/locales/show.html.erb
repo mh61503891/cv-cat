@@ -6,15 +6,30 @@
 <nav>
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <%= link_to 'Locales', locales_path %>
+      <%= link_to "Locales", locales_path %>
     </li>
     <li class="breadcrumb-item active">
-      <%= @locale.value %>
+      <%= @locale.id %>
     </li>
   </ol>
 </nav>
-<div class="mb-3">
-  <%= link_to 'Edit', edit_locale_path(@locale), class: %w[btn btn-primary] %>
+<div class="btn-toolbar mb-3" role="toolbar">
+  <div class="btn-group me-auto" role="group">
+    <%= link_to locales_path, class: %w[btn btn-light] do %>
+      <i class="bi bi-arrow-left-short"></i>
+      <span>Back</span>
+    <% end %>
+  </div>
+  <div class="btn-group ms-auto" role="group">
+    <%= link_to "Edit", edit_locale_path(@locale), class: %w[btn btn-primary] %>
+  </div>
+  <div class="btn-group ms-2" role="group">
+    <%= link_to @locale, method: :delete, class: %w[btn btn-danger],
+        data: { confirm: "Are you sure?" } do %>
+      <i class="bi bi-trash"></i>
+      <span>Destroy</span>
+    <% end %>
+  </div>
 </div>
 <div class="mb-3 row">
   <label class="col-sm-2 col-form-label">Value</label>

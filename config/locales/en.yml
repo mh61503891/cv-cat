@@ -30,4 +30,15 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      publisher:
+        name: Name (%{locale_key})
+        abbreviation: Abbreviation (%{locale_key})
+        url: URL
+    errors:
+      models:
+        publisher:
+          attributes:
+            names:
+              empty: can't be empty
